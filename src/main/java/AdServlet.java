@@ -42,6 +42,10 @@ public class AdServlet extends HttpServlet {
 //                req.getRequestDispatcher("/" + adn).forward(req, resp);
                 resp.sendRedirect("/" + adn);
             }
+            else {
+//                ad.updateAd(adn, header, textField, contactName1, contactName2, con1, con2);
+                resp.sendRedirect("/" + adn);
+            }
         }
     }
 }

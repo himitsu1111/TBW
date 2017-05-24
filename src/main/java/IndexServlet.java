@@ -44,8 +44,14 @@ public class IndexServlet extends HttpServlet {
 //        else
 //            resp.sendRedirect("/index.jsp");
 //        req.setAttribute("show", "show");
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
+        //проверка на авторизацию
+        if (req.getSession().getAttribute("adn") == null) {
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        }
+        else {
+            req.getRequestDispatcher("/settings").forward(req, resp);
+        }
     }
 
     @Override

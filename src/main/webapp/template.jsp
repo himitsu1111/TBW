@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
+<c:set var="adsJsp" value="${ads}" />
 <head>
 
   <title>Make youre ad</title>
@@ -39,12 +40,14 @@
     <div class="form-group">
       <%--заголовок, название услуги--%>
       <label>Header</label>
-      <input type="text" name="header" class="form-control" placeholder="Type here header of youre ad">
+      <input type="text" name="header" id="h_id" class="form-control"
+             placeholder="Type here header of youre ad" value="${adsJsp.header}">
     </div>
     <div class="form-group">
       <%--текст объявы--%>
       <label>Text of your ad</label>
-      <textarea class="form-control" name="textField" rows="3" placeholder="input here substance of ad"></textarea>
+      <textarea class="form-control" name="textField" id="t_id" rows="3"
+                placeholder="input here substance of ad">${adsJsp.textField}</textarea>
     </div>
 
     <div class="form-group">
@@ -59,7 +62,8 @@
     <div class="form-group">
       <%--способ связи 1--%>
       <label>Contact #1</label>
-      <input type="text" name="con1" class="form-control" placeholder="icq, telegram, skype, phone number, email, viber, whatsapp">
+      <input type="text" name="con1" class="form-control"
+             placeholder="icq, telegram, skype, phone number, email, viber, whatsapp" value="${adsJsp.con1}">
     </div>
 
     <div class="form-group">
@@ -74,12 +78,21 @@
     <div class="form-group">
       <%--способ связи 2--%>
       <label>Contact #2</label>
-      <input type="text" name="con2" class="form-control" placeholder="icq, telegram, skype, phone number, email, viber, whatsapp">
+      <input type="text" name="con2" class="form-control"
+             placeholder="icq, telegram, skype, phone number, email, viber, whatsapp" value="${adsJsp.con2}">
     </div>
 
     <%--<c:forEach var="contacts" items="${listContacts}">--%>
 
 
+    <script>
+      <%--function codeAddress() {--%>
+        <%--$('#h_id').text(${adsJsp.header});--%>
+      <%--}--%>
+      <%--window.onload = codeAddress;--%>
+
+      document.querySelector('select').value='viber'
+    </script>
 
 
     <button type="submit" class="btn btn-default">Save</button>

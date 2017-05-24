@@ -42,6 +42,48 @@ public class AdsDAO {
         return true;
     }
 
+    public void updateAd(String adname, String header, String textField,
+                         String conName1, String conName2, String con1, String con2) {
+
+        String sql = "update ads set";
+        Connection con = ConnectionSingleton.getInstance();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, adname);
+            ps.setString(2, adname);
+            ps.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public boolean checkAd(String adname) {
+
+        String sql = "select adname from ads where adname = ?";
+        Connection con = ConnectionSingleton.getInstance();
+        List<Ads> la = new ArrayList<Ads>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, adname);
+            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+            if (rs.next()) {
+                System.out.println("check Ad return something!!!");
+                return true;
+            }
+//            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public Ads getAdByAdname(String adname) {
 
         String sql = "select a.id, a.adname, a.header, a.textfield, " +

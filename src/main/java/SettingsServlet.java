@@ -1,6 +1,7 @@
 import dao.AdsDAO;
 import dao.ContactsDAO;
 import dao.GroupsDAO;
+import dao.POJO.Ads;
 import dao.POJO.Contacts;
 import dao.POJO.Groups;
 import dao.UsersDAO;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 
 //@WebServlet("/settings")
-public class MyServlet extends HttpServlet {
+public class SettingsServlet extends HttpServlet {
 
     ContactsDAO cd = new ContactsDAO();
 
@@ -28,15 +29,22 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        PrintWriter out = resp.getWriter();
-
 //        resp.sendRedirect("/");
 
-        if (req.getSession().getAttribute("adn") != null) {
+        AdsDAO ad = new AdsDAO();
+        String s = (String)req.getSession().getAttribute("adn");
+
+        if (s != null) {
             System.out.println("was in settings get adn not null");
             List<Contacts> lc = cd.getContacts();
 
             req.setAttribute("listContacts", lc);
+
+            if (ad.checkAd(s)) {
+                Ads ads = ad.getAdByAdname(s);
+                req.setAttribute("ads", ads);
+                System.out.println("was in get/settings/checkAd");
+            }
 
             req.getRequestDispatcher("/template.jsp").forward(req, resp);
         }
