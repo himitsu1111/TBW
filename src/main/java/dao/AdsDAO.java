@@ -42,16 +42,36 @@ public class AdsDAO {
         return true;
     }
 
+    /**
+     * all same params
+     * @param adname
+     * @param header
+     * @param textField
+     * @param conName1
+     * @param conName2
+     * @param con1
+     * @param con2
+     */
+
     public void updateAd(String adname, String header, String textField,
                          String conName1, String conName2, String con1, String con2) {
 
-        String sql = "update ads set";
+        String sql = "update ads set header = ?, textfield = ?, " +
+                "con_1_id = (select id from contacts where name = ?), " +
+                "con_2_id = (select id from contacts where name = ?), " +
+                    "contact1 = ?, contact2 = ? where adname = ?";
         Connection con = ConnectionSingleton.getInstance();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, adname);
-            ps.setString(2, adname);
+            ps.setString(1, header);
+            ps.setString(2, textField);
+            ps.setString(3, conName1);
+            ps.setString(4, conName2);
+            ps.setString(5, con1);
+            ps.setString(6, con2);
+            ps.setString(7, adname);
+
             ps.execute();
 
         } catch (SQLException e) {

@@ -32,20 +32,25 @@ public class AdServlet extends HttpServlet {
         String contactName1 = req.getParameter("contactName1");
         String contactName2 = req.getParameter("contactName2");
 
+        String adname = (String)req.getSession().getAttribute("adn");
         AdsDAO ad = new AdsDAO();
+        if (!ad.checkAd(adname)) {
+            if (header != null) {
+//                String adn = (String) req.getSession().getAttribute("adn");
+                if (!adname.isEmpty()) {
 
-        if (header != null) {
-            String adn = (String)req.getSession().getAttribute("adn");
-            if (!adn.isEmpty()) {
-
-                ad.createAd(adn, header, textField, contactName1, contactName2, con1, con2);
-//                req.getRequestDispatcher("/" + adn).forward(req, resp);
-                resp.sendRedirect("/" + adn);
+                    ad.createAd(adname, header, textField, contactName1, contactName2, con1, con2);
+                    //                req.getRequestDispatcher("/" + adn).forward(req, resp);
+                    resp.sendRedirect("/" + adname);
+                } else {
+                    //                ad.updateAd(adn, header, textField, contactName1, contactName2, con1, con2);
+                    resp.sendRedirect("/" + adname);
+                }
             }
-            else {
-//                ad.updateAd(adn, header, textField, contactName1, contactName2, con1, con2);
-                resp.sendRedirect("/" + adn);
-            }
+        }
+        else {
+            ad.updateAd(adname, header, textField, contactName1, contactName2, con1, con2);
+            resp.sendRedirect("/" + adname);
         }
     }
 }

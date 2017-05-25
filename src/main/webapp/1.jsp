@@ -24,7 +24,7 @@
 
 		
 		<div class="row">
-		  <div class="col-xs-3">
+		  <div class="col-md-2">
 			  <form class="form-inline" action="/search" method="get">
 				  <div class="form-group">
 					  <%--<label for="exampleInputName2">Search</label>--%>
@@ -32,12 +32,26 @@
 				  </div>
 			  </form>
 		  </div>
+
 		</div>
-		<button type="button" class="btn btn-default btn-lg active" onclick="location.href='/';">Home</button>
-		<h1>${adn}</h1>
-		<c:if test="${not empty adn}">
-			<h4 align="right" class="logoutH4"><a href="/logout" class="widget-cat">Logout</a></h4>
-		</c:if>
+		<div class="row">
+		  <div class="col-md-1">
+			<button type="button" class="btn btn-default btn-lg active" onclick="location.href='/';">Home</button>
+		  </div>
+		  <div class="col-md-1">
+			  <h1>${adn}</h1>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-1">
+			  <c:if test="${not empty adn}">
+				  <h4 align="right" class="logoutH4"><a href="/logout" class="widget-cat">Logout</a></h4>
+			  </c:if>
+		  </div>
+		</div>
+
+
+
     </div>
 </div>
 
