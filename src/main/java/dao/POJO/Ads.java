@@ -9,8 +9,8 @@ public class Ads {
     private String adname;
     private String header;
     private String textField;
-    private int con_1_id;
-    private int con_2_id;
+    private String con_1_id;
+    private String con_2_id;
     private String con1;
     private String con2;
     private String email;
@@ -18,7 +18,7 @@ public class Ads {
 
     public Ads(long id, String adname,
                String header, String textField,
-               int con_1_id, int con_2_id, String con1,
+               String con_1_id, String con_2_id, String con1,
                String con2, String email, int rating) {
         this.id = id;
         this.adname = adname;
@@ -64,19 +64,19 @@ public class Ads {
         this.textField = textField;
     }
 
-    public int getCon_1_id() {
+    public String getCon_1_id() {
         return con_1_id;
     }
 
-    public void setCon_1_id(int con_1_id) {
+    public void setCon_1_id(String con_1_id) {
         this.con_1_id = con_1_id;
     }
 
-    public int getCon_2_id() {
+    public String getCon_2_id() {
         return con_2_id;
     }
 
-    public void setCon_2_id(int con_2_id) {
+    public void setCon_2_id(String con_2_id) {
         this.con_2_id = con_2_id;
     }
 

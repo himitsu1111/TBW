@@ -51,10 +51,10 @@
     </div>
 
     <div class="form-group">
-      <label for="sel11">Select contact type:</label>
-      <select class="form-control" name="contactName1" id="sel11">
+      <label>Select contact type:</label>
+      <select class="form-control" id="sell1">
         <c:forEach var="contacts" items="${listContacts}">
-          <option >${contacts.name}</option>
+        <option>${contacts.name}<option>
         </c:forEach>
       </select>
     </div>
@@ -67,10 +67,10 @@
     </div>
 
     <div class="form-group">
-      <label for="sel12">Select contact type:</label>
-      <select class="form-control" name="contactName2" id="sel12">
+      <label>Select contact type:</label>
+      <select class="form-control" id="sell2">
         <c:forEach var="contacts" items="${listContacts}">
-          <option>${contacts.name}</option>
+        <option>${contacts.name}<option>
         </c:forEach>
       </select>
     </div>
@@ -82,18 +82,21 @@
              placeholder="icq, telegram, skype, phone number, email, viber, whatsapp" value="${adsJsp.con2}">
     </div>
 
+
+
     <%--<c:forEach var="contacts" items="${listContacts}">--%>
 
-
     <script>
-      <%--function codeAddress() {--%>
-        <%--$('#h_id').text(${adsJsp.header});--%>
-      <%--}--%>
-      <%--window.onload = codeAddress;--%>
 
-      document.querySelector('select').value='viber'
+      var v = document.getElementById("sell1");
+      alert(v + " - result");
+      v.value = 'icq';
+
+      var v = document.getElementById("sell2");
+      alert(v + " - result");
+      v.value = 'phone number';
+
     </script>
-
 
     <button type="submit" class="btn btn-default">Save</button>
 

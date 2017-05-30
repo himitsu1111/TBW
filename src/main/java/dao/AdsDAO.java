@@ -106,9 +106,10 @@ public class AdsDAO {
 
     public Ads getAdByAdname(String adname) {
 
-        String sql = "select a.id, a.adname, a.header, a.textfield, " +
-                "a.con_1_id, a.con_2_id, a.contact1, a.contact2, u.email, a.rating " +
-                "from ads a, users u where a.adname = ? and a.adname = u.adname; ";
+        String sql = "select a.id, a.adname, a.header, a.textfield, c1.name as con_1_id, " +
+                "c2.name as con_2_id, a.contact1, a.contact2, u.email, a.rating " +
+                "from ads a, users u, contacts c1, contacts c2 where a.adname = ? " +
+                "and a.adname = u.adname and a.con_1_id = c1.id and a.con_2_id = c2.id; ";
         Connection con = ConnectionSingleton.getInstance();
         Ads ads = null;
 
@@ -119,8 +120,8 @@ public class AdsDAO {
             if (rs.next())
 
             ads = new Ads(rs.getInt("id"), rs.getString("adname"), rs.getString("header"),
-                    rs.getString("textField"), rs.getInt("con_1_id"),
-                    rs.getInt("con_2_id"), rs.getString("contact1"),
+                    rs.getString("textField"), rs.getString("con_1_id"),
+                    rs.getString("con_2_id"), rs.getString("contact1"),
                     rs.getString("contact2"), rs.getString("email"), rs.getInt("rating"));
 
         } catch (SQLException e) {
@@ -151,8 +152,8 @@ public class AdsDAO {
 //            if (rs.next()) {
                 while (rs.next()) {
                     la.add(new Ads(rs.getInt("id"), rs.getString("adname"), rs.getString("header"),
-                            rs.getString("textField"), rs.getInt("con_1_id"),
-                            rs.getInt("con_2_id"), rs.getString("contact1"),
+                            rs.getString("textField"), rs.getString("con_1_id"),
+                            rs.getString("con_2_id"), rs.getString("contact1"),
                             rs.getString("contact2"), rs.getString("email"), rs.getInt("rating")));
                     System.out.println("was in AdsDAO while new Ads!");
                 }
