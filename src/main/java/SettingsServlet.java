@@ -37,7 +37,7 @@ public class SettingsServlet extends HttpServlet {
         if (s != null) {
             System.out.println("was in settings get adn not null");
             List<Contacts> lc = cd.getContacts();
-
+            System.out.println(lc.toString() + " - lc object");
             req.setAttribute("listContacts", lc);
 
             if (ad.checkAd(s)) {

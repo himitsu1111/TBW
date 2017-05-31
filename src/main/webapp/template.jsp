@@ -51,10 +51,10 @@
     </div>
 
     <div class="form-group">
-      <label>Select contact type:</label>
-      <select class="form-control" id="sell1">
+      <label for="sell1">Select contact type:</label>
+      <select class="form-control" name="contactName1" id="sell1">
         <c:forEach var="contacts" items="${listContacts}">
-        <option>${contacts.name}<option>
+        <option>${contacts.name}</option>
         </c:forEach>
       </select>
     </div>
@@ -67,10 +67,10 @@
     </div>
 
     <div class="form-group">
-      <label>Select contact type:</label>
-      <select class="form-control" id="sell2">
+      <label for="sell2">Select contact type:</label>
+      <select class="form-control" name="contactName2" id="sell2">
         <c:forEach var="contacts" items="${listContacts}">
-        <option>${contacts.name}<option>
+          <option>${contacts.name}</option>
         </c:forEach>
       </select>
     </div>
@@ -89,12 +89,10 @@
     <script>
 
       var v = document.getElementById("sell1");
-      alert(v + " - result");
-      v.value = 'icq';
+      v.value = '${adsJsp.con_1_id}';
 
-      var v = document.getElementById("sell2");
-      alert(v + " - result");
-      v.value = 'phone number';
+      var n = document.getElementById("sell2");
+      n.value = '${adsJsp.con_2_id}';
 
     </script>
 

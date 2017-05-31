@@ -117,13 +117,14 @@ public class AdsDAO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, adname);
             ResultSet rs = ps.executeQuery();
-            if (rs.next())
+            if (rs.next()) {
 
-            ads = new Ads(rs.getInt("id"), rs.getString("adname"), rs.getString("header"),
-                    rs.getString("textField"), rs.getString("con_1_id"),
-                    rs.getString("con_2_id"), rs.getString("contact1"),
-                    rs.getString("contact2"), rs.getString("email"), rs.getInt("rating"));
-
+                ads = new Ads(rs.getInt("id"), rs.getString("adname"), rs.getString("header"),
+                        rs.getString("textField"), rs.getString("con_1_id"),
+                        rs.getString("con_2_id"), rs.getString("contact1"),
+                        rs.getString("contact2"), rs.getString("email"), rs.getInt("rating"));
+                System.out.println(ads.toString() + " - ads object");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
