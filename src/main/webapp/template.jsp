@@ -41,13 +41,13 @@
       <%--заголовок, название услуги--%>
       <label>Header</label>
       <input type="text" name="header" id="h_id" class="form-control"
-             placeholder="Type here header of youre ad" value="${adsJsp.header}">
+             placeholder="Type here header of youre ad" value="${adsJsp.header}" maxlength="">
     </div>
     <div class="form-group">
       <%--текст объявы--%>
       <label>Text of your ad</label>
       <textarea class="form-control" name="textField" id="t_id" rows="3"
-                placeholder="input here substance of ad">${adsJsp.textField}</textarea>
+                placeholder="input here substance of ad" maxlength="400">${adsJsp.textField}</textarea>
     </div>
 
     <div class="form-group">

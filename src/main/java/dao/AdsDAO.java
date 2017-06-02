@@ -85,7 +85,6 @@ public class AdsDAO {
 
         String sql = "select adname from ads where adname = ?";
         Connection con = ConnectionSingleton.getInstance();
-        List<Ads> la = new ArrayList<Ads>();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -188,4 +187,26 @@ public class AdsDAO {
             e.printStackTrace();
         }
     }
+
+    public String getRating(String adname) {
+
+        String sql = "select rating from ads where adname = ?";
+        Connection con = ConnectionSingleton.getInstance();
+        String rating = "";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, adname);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                rating = String.valueOf(rs.getInt("rating"));
+            }
+//            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rating;
+    }
+
 }

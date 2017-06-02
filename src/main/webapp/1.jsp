@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="mainpanel">
     <div class="panel-heading">
         <%--<br>Search:<br>--%>
 
